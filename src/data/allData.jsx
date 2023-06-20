@@ -87,6 +87,62 @@ const allData = [
       </svg>
     ),
   },
+  {
+    id: 5,
+    img: "./assets/images/products/product-1.jpg",
+    name: "Earphone",
+    price: 90,
+    type: "product",
+  },
+  {
+    id: 6,
+    img: "./assets/images/products/product-2.png",
+    name: "shoos",
+    price: 70,
+    type: "product",
+  },
+  {
+    id: 7,
+    img: "./assets/images/products/product-3.png",
+    name: "shoos",
+    price: 80,
+    type: "product",
+  },
+  {
+    id: 8,
+    img: "./assets/images/products/product-4.jpg",
+    name: "IPhone X",
+    price: 67,
+    type: "product",
+  },
+  {
+    id: 9,
+    img: "./assets/images/products/product-5.png",
+    name: "Head Phone",
+    price: 78,
+    type: "product",
+  },
+  {
+    id: 10,
+    img: "./assets/images/products/product-6.png",
+    name: "headset",
+    price: 86,
+    type: "product",
+  },
+  {
+    id: 11,
+    img: "./assets/images/products/product-7.jpg",
+    name: "headphone",
+    price: 74,
+    type: "product",
+  },
+  {
+    id: 12,
+    img: "./assets/images/products/product-8.jpg",
+    name: "IPhone 13pro",
+    price: 400,
+    type: "product",
+  },
 ];
 
 export default allData;
