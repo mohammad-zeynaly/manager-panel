@@ -1,0 +1,34 @@
+@use "./global/reset";
+@use "./global/font";
+@use "./global/variables";
+@use "./global/mixin";
+
+/* ============ general styles  ============ */
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-family: $font-medium, Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 128rem;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ============ Responsive Project  ============ */
+@use "./global/responsive";
