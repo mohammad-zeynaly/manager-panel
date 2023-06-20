@@ -35,7 +35,7 @@ body {
 
 /* ============ Navbar style  ============ */
 .nav {
-  background: #fff;
+  background: variables.$white-color;
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.06),
     0px 8px 10px 1px rgba(0, 0, 0, 0.042), 0px 3px 14px 2px rgba(0, 0, 0, 0.036);
   transition: all 200ms ease-in;
@@ -69,7 +69,6 @@ body {
 }
 .nav-content-right__img {
   @include mixin.widthAndHeight(4.5rem, 4.5rem);
-
   border-radius: 100%;
   object-fit: cover;
 }
@@ -78,4 +77,56 @@ body {
 .nav-content-left__icon {
   @include mixin.widthAndHeight(2.5rem, 2.5rem);
   cursor: pointer;
+}
+
+/* ============  style statistics  ============ */
+
+.statistics {
+  margin-top: 5rem;
+}
+.statistics__wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 1.6rem;
+}
+.statistics-item {
+  @include mixin.flexBox(space-between, center);
+  background-color: variables.$white-color;
+  padding: 2.4rem;
+  border-radius: 0.8rem;
+}
+.statistics-item__content-left {
+  @include mixin.flexBox(center, center);
+}
+.statistics-item__icon {
+  @include mixin.widthAndHeight(3.5rem, 3.5rem);
+  color: variables.$primary-color;
+}
+.statistics-item__information {
+  margin-left: 1rem;
+  span {
+    color: rgba(52, 49, 76, 0.54);
+    font-size: 1.4rem;
+  }
+  h6 {
+    color: variables.$primary-color;
+    font-size: 1.6rem;
+  }
+}
+.statistics-item__content-right {
+}
+.statistics-item-icon__btn {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 0.6rem;
+  transition: background 200ms ease-in;
+  border-radius: 100%;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+.statistics-item__arrow {
+  @include mixin.widthAndHeight(2.3rem, 2.3rem);
+  color: rgba(0, 0, 0, 0.54);
 }

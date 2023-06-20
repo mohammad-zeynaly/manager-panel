@@ -1,5 +1,7 @@
+import AllStatistics from "../../components/AllStatistics/AllStatistics";
+
 const Products = () => {
-  return <h1>Home page</h1>;
+  return <AllStatistics />;
 };
 
 export default Products;
