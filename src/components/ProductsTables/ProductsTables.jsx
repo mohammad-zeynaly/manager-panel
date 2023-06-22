@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useFilteredData from "../../hooks/useFilterdData";
 import ProductsTablesItem from "../ProductsTablesItem/ProductsTablesItem";
 
@@ -7,7 +8,12 @@ const ProductsTables = () => {
   return (
     <section className="products">
       <div className="products__wrapper">
-        <h3 className="products__title">Top Selling Products</h3>
+        <div className="products__heading">
+          <h3 className="products__title">Top Selling Products</h3>
+          <Link className="btn-md products__btn" to="/create-product">
+            New product +
+          </Link>
+        </div>
         <table className="products-table">
           <thead className="products-table__heading">
             <tr>

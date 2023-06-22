@@ -29,8 +29,29 @@ body {
   margin-left: auto;
 }
 
-.app__wrapper {
-  padding-top: 90px;
+.app__section {
+  padding-top: 70px;
+  padding-bottom: 35px;
+}
+.app__wrapper,
+.nav__wrapper {
+  padding-left: 24rem !important;
+}
+.sidebar--close .app__wrapper {
+  padding-left: 0 !important;
+}
+.sidebar--close .nav__wrapper {
+  padding-left: 0 !important;
+}
+.btn-md {
+  color: variables.$white-color;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 0.8rem;
+  transition: all 200ms ease-in;
+  &:hover {
+    opacity: 0.92;
+  }
 }
 
 /* ============ Navbar style  ============ */
@@ -40,6 +61,7 @@ body {
     0px 8px 10px 1px rgba(0, 0, 0, 0.042), 0px 3px 14px 2px rgba(0, 0, 0, 0.036);
   transition: all 200ms ease-in;
   position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   width: 100%;
@@ -143,8 +165,16 @@ body {
   padding: 2rem;
   border-radius: 0.8rem;
 }
+.products__heading {
+  @include mixin.flexBox(space-between, center);
+}
+
 .products__title {
   margin: 1.6rem 0;
+}
+
+.products__btn {
+  background-color: variables.$primary-color;
 }
 .products-table {
   width: 100%;
@@ -199,4 +229,53 @@ body {
 }
 .products-table__icon--delete {
   color: red;
+}
+
+/* ============  style sidebar  ============ */
+.sidebar {
+  background: linear-gradient(
+    to bottom,
+    rgba(34, 42, 69, 0.96),
+    rgba(34, 42, 69, 0.96)
+  );
+  color: variables.$white-color;
+  height: 120%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 26rem;
+}
+.sidebar--open {
+  left: 0;
+}
+.sidebar--close {
+  left: -26rem;
+}
+.sidebar__wrapper {
+}
+.sidebar__title {
+  font-size: 2.2rem;
+  border-bottom: 1px solid #eee;
+  padding: 1.6rem;
+}
+.sidebar-menu {
+  @include mixin.flexBox(center, start);
+  flex-direction: column;
+  font-size: 1.8rem;
+  padding: 0 1.6rem;
+  margin-top: 1.5rem;
+}
+
+.sidebar-menu__item {
+  margin-top: 1.5rem;
+  @include mixin.flexBox(center, center);
+}
+.sidebar__icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+.sidebar-menu__link {
+  color: inherit;
 }
