@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useFilteredData from "../../hooks/useFilteredData";
-import ProductsTablesItem from "../ProductsTablesItem/ProductsTablesItem";
+import TablesTemplate from "../TablesTemplate/TableTemplate";
+import TableRowTemplate from "../TableRowTemplate/TableRowTemplate";
 
 const ProductsTables = () => {
   const productItem = useFilteredData("product");
@@ -14,20 +15,12 @@ const ProductsTables = () => {
             New product +
           </Link>
         </div>
-        <table className="products-table">
-          <thead className="products-table__heading">
-            <tr>
-              <th className="products-table__title">Name</th>
-              <th className="products-table__title">price</th>
-              <th className="products-table__title">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="products-table-body">
-            {productItem?.map((productItem) => (
-              <ProductsTablesItem {...productItem} key={productItem.id} />
-            ))}
-          </tbody>
-        </table>
+
+        <TablesTemplate className="products-table-body">
+          {productItem?.map((productItem) => (
+            <TableRowTemplate {...productItem} key={productItem.id} />
+          ))}
+        </TablesTemplate>
       </div>
     </section>
   );
