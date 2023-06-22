@@ -736,6 +736,9 @@ input[type=file] {
     padding: 1.3rem;
     overflow-x: auto;
   }
+  .nav-content-right .nav-content-right__profile span {
+    padding-right: 0.8rem;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
