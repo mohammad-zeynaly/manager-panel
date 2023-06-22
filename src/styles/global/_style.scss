@@ -217,6 +217,7 @@ body {
 }
 
 .products__heading,
+.users__heading,
 .products__wrapper,
 .users__wrapper {
   background-color: variables.$white-color;
@@ -290,6 +291,7 @@ body {
 
 /* ============  style users statistics  ============ */
 .users-statistics {
+  margin-top: 5rem;
 }
 .users-statistics__wrapper {
   @include mixin.flexBox(space-between, center);

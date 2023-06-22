@@ -389,6 +389,7 @@ body {
 }
 
 .products__heading,
+.users__heading,
 .products__wrapper,
 .users__wrapper {
   background-color: #ffffff;
@@ -468,6 +469,10 @@ body {
 }
 
 /* ============  style users statistics  ============ */
+.users-statistics {
+  margin-top: 5rem;
+}
+
 .users-statistics__wrapper {
   display: flex;
   justify-content: space-between;
@@ -711,6 +716,17 @@ input[type=file] {
   .statistics-item__information h6 {
     font-size: 1.5rem;
   }
+  /* ============  responsive page users  ============ */
+  .users-statistics__wrapper {
+    flex-direction: column;
+  }
+  .users-statistics-item {
+    margin-bottom: 1.6rem;
+    width: 100%;
+  }
+  .users-statistics-item:last-child {
+    margin-bottom: 0;
+  }
 }
 @media only screen and (max-width: 576px) {
   .container {
@@ -732,12 +748,15 @@ input[type=file] {
     margin: 0.5rem 0;
   }
   .products__heading,
-  .products__wrapper {
+  .products__wrapper,
+  .users__heading,
+  .users__wrapper {
     padding: 1.3rem;
     overflow-x: auto;
   }
   .nav-content-right .nav-content-right__profile span {
     padding-right: 0.8rem;
+    font-size: 1.4rem;
   }
 }
 

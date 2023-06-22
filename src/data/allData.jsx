@@ -189,6 +189,48 @@ const allData = [
     growth: 21,
     type: "usersStatistics",
   },
+  {
+    id: 15,
+    name: "ali ",
+    img: "./assets/images/users/user-1.jpg",
+    password: "12345678",
+    type: "users",
+  },
+  {
+    id: 16,
+    name: "akbar ",
+    img: "./assets/images/users/user-2.jpg",
+    password: "01010101",
+    type: "users",
+  },
+  {
+    id: 17,
+    name: "mohammad ",
+    img: "./assets/images/users/user-3.jpg",
+    password: "kj87ty98",
+    type: "users",
+  },
+  {
+    id: 18,
+    name: "sasan ",
+    img: "./assets/images/users/user-4.jpg",
+    password: "Awe#7895",
+    type: "users",
+  },
+  {
+    id: 19,
+    name: "hamid ",
+    img: "./assets/images/users/user-5.jpg",
+    password: "li$#1245",
+    type: "users",
+  },
+  {
+    id: 20,
+    name: "reza ",
+    img: "./assets/images/users/user-6.jpg",
+    password: "Aer%2145",
+    type: "users",
+  },
 ];
 
 export default allData;
