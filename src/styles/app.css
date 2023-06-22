@@ -727,6 +727,10 @@ input[type=file] {
   .users-statistics-item:last-child {
     margin-bottom: 0;
   }
+  /* ============  responsive page form  ============ */
+  .form-input {
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 576px) {
   .container {
@@ -757,6 +761,20 @@ input[type=file] {
   .nav-content-right .nav-content-right__profile span {
     padding-right: 0.8rem;
     font-size: 1.4rem;
+  }
+  /* ============  responsive page form  ============ */
+  .drop-title {
+    font-size: 1.6rem;
+  }
+  .form-input__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.6rem;
+  }
+  .form__upload {
+    width: 6rem;
+    height: 6rem;
+    margin-left: 0.6rem;
   }
 }
 

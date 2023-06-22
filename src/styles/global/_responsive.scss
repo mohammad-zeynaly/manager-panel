@@ -1,3 +1,5 @@
+@use "./mixin";
+
 /* ============ Responsive Project  ============ */
 
 @media only screen and (min-width: 1400px) {
@@ -73,6 +75,11 @@
       margin-bottom: 0;
     }
   }
+
+  /* ============  responsive page form  ============ */
+  .form-input {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -111,5 +118,18 @@
         font-size: 1.4rem;
       }
     }
+  }
+
+  /* ============  responsive page form  ============ */
+  .drop-title {
+    font-size: 1.6rem;
+  }
+  .form-input__icon {
+    @include mixin.widthAndHeight(2.5rem, 2.5rem);
+    margin-right: 0.6rem;
+  }
+  .form__upload {
+    @include mixin.widthAndHeight(6rem, 6rem);
+    margin-left: 0.6rem;
   }
 }
