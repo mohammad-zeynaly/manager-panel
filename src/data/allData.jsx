@@ -139,7 +139,7 @@ const allData = [
   {
     id: 12,
     img: "./assets/images/products/product-8.jpg",
-    name: "IPhone 13pro",
+    name: "IPhone 13",
     price: 400,
     type: "product",
   },

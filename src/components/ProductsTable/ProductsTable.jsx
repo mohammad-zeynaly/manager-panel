@@ -8,14 +8,13 @@ const ProductsTables = () => {
 
   return (
     <section className="products">
+      <div className="products__heading">
+        <h3 className="products__title">Top Selling Products</h3>
+        <Link className="btn-md products__btn" to="/create-product">
+          New product +
+        </Link>
+      </div>
       <div className="products__wrapper">
-        <div className="products__heading">
-          <h3 className="products__title">Top Selling Products</h3>
-          <Link className="btn-md products__btn" to="/create-product">
-            New product +
-          </Link>
-        </div>
-
         <TablesTemplate
           className="products-table-body"
           fieldPrice={true}

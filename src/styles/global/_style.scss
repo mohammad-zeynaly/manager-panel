@@ -35,7 +35,7 @@ body {
 }
 .app__wrapper,
 .nav__wrapper {
-  padding-left: 24rem !important;
+  padding-left: 26.5rem !important;
 }
 .sidebar--close .app__wrapper {
   padding-left: 0 !important;
@@ -61,6 +61,7 @@ body {
   text-align: center;
   table-layout: fixed;
   border-collapse: collapse;
+  min-width: 44rem;
 }
 .table__heading {
   border-bottom: 1px solid #eee;
@@ -215,6 +216,7 @@ body {
   box-shadow: variables.$main-shadow;
 }
 
+.products__heading,
 .products__wrapper,
 .users__wrapper {
   background-color: variables.$white-color;
@@ -250,6 +252,7 @@ body {
   left: 0;
   bottom: 0;
   width: 26rem;
+  z-index: 99;
 }
 .sidebar--open {
   left: 0;
