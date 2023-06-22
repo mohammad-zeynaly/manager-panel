@@ -1,11 +1,11 @@
 import AllStatistics from "../../components/AllStatistics/AllStatistics";
-import ProductsTables from "../../components/ProductsTables/ProductsTables";
+import ProductsTable from "../../components/ProductsTable/ProductsTable";
 
 const Products = () => {
   return (
     <>
       <AllStatistics />
-      <ProductsTables />
+      <ProductsTable />
     </>
   );
 };

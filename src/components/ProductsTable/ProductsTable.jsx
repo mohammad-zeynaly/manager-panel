@@ -16,9 +16,18 @@ const ProductsTables = () => {
           </Link>
         </div>
 
-        <TablesTemplate className="products-table-body">
+        <TablesTemplate
+          className="products-table-body"
+          fieldPrice={true}
+          filedPassword={false}
+        >
           {productItem?.map((productItem) => (
-            <TableRowTemplate {...productItem} key={productItem.id} />
+            <TableRowTemplate
+              fieldPrice={true}
+              filedPassword={false}
+              {...productItem}
+              key={productItem.id}
+            />
           ))}
         </TablesTemplate>
       </div>

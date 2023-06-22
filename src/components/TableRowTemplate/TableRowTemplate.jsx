@@ -1,4 +1,11 @@
-const TableRowTemplate = ({ img, name, price }) => {
+const TableRowTemplate = ({
+  img,
+  name,
+  price,
+  password,
+  fieldPrice,
+  filedPassword,
+}) => {
   return (
     <tr className="table-body__row">
       <td className="table-body__column ">
@@ -7,7 +14,9 @@ const TableRowTemplate = ({ img, name, price }) => {
           <span className="table__img-name">{name}</span>
         </div>
       </td>
-      <td className="table-body__column"> {price} $</td>
+      {fieldPrice && <td className="table-body__column"> {price} $</td>}
+      {filedPassword && <td className="table-body__column"> {password}</td>}
+
       <td className="table-body__column">
         <div className="table-body__column-actions">
           <button className="table__icon-btn">

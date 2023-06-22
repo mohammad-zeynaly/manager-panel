@@ -90,6 +90,7 @@ body {
 }
 .table__img {
   @include mixin.widthAndHeight(5rem, 5rem);
+  border-radius: 100%;
 }
 
 .table__icon-btn {
@@ -208,22 +209,27 @@ body {
 }
 
 /* ============  style products table  ============ */
-.products {
+.products,
+.users {
   margin-top: 5rem;
   box-shadow: variables.$main-shadow;
 }
 
-.products__wrapper {
+.products__wrapper,
+.users__wrapper {
   background-color: variables.$white-color;
   padding: 2rem;
   border-radius: 0.8rem;
 }
-.products__heading {
+.products__heading,
+.users__heading {
   @include mixin.flexBox(space-between, center);
 }
 
-.products__title {
+.products__title,
+.users__title {
   margin: 1.6rem 0;
+  font-size: 1.8rem;
 }
 
 .products__btn {
@@ -292,6 +298,7 @@ body {
   border-radius: 0.8rem;
   width: 49%;
   @include mixin.flexBox(space-between, center);
+  box-shadow: variables.$main-shadow;
 }
 .users-statistics-item__icon {
   @include mixin.flexBox("", center);
