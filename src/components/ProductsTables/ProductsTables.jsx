@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useFilteredData from "../../hooks/useFilterdData";
+import useFilteredData from "../../hooks/useFilteredData";
 import ProductsTablesItem from "../ProductsTablesItem/ProductsTablesItem";
 
 const ProductsTables = () => {

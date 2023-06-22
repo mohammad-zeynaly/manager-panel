@@ -1,5 +1,5 @@
 import StatisticsItem from "../StatisticsItem/StatisticsItem";
-import useFilteredData from "../../hooks/useFilterdData";
+import useFilteredData from "../../hooks/useFilteredData";
 
 const AllStatistics = () => {
   const AllStatisticsData = useFilteredData("statistics");

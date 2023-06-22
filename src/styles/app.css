@@ -457,6 +457,67 @@ body {
   color: inherit;
 }
 
+/* ============  style users statistics  ============ */
+.users-statistics__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.users-statistics-item {
+  background-color: #ffffff;
+  color: rgb(52, 49, 76);
+  padding: 1.6rem;
+  border-radius: 0.8rem;
+  width: 49%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.users-statistics-item__icon {
+  display: flex;
+  justify-content: "";
+  align-items: center;
+}
+.users-statistics-item__icon h6 {
+  margin-left: 1.5rem;
+  font-size: 2rem;
+  background: transparent;
+}
+.users-statistics-item__icon span {
+  padding: 1rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.users-statistics__icon--trending {
+  background-color: #daf4e9;
+  color: #08ad6c;
+}
+
+.users-statistics__icon--star {
+  color: #ff3d57;
+  background-color: #fcc2ca;
+}
+
+.users-statistics__icon {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.users-statistics__count {
+  margin-top: 2rem;
+  font-size: 2.5rem;
+}
+
+.users-statistics-item__percent {
+  font-size: 1.6rem;
+  background-color: transparent;
+}
+
 /* ============ Responsive Project  ============ */
 @media only screen and (min-width: 1400px) {
   .container {
