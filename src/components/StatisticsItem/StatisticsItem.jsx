@@ -1,8 +1,10 @@
+import convertToSvgHtml from "../../functions/convertToSvgHtml";
+
 const StatisticsItem = ({ title, counts, icon }) => {
   return (
     <div className="statistics-item">
       <div className="statistics-item__content-left">
-        {icon}
+        <div dangerouslySetInnerHTML={convertToSvgHtml(icon)}></div>
         <div className="statistics-item__information">
           <span> {title} </span>
           <h6>{counts}</h6>
