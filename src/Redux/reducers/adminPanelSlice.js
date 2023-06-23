@@ -31,9 +31,11 @@ const adminPanelSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchGetAllData.fulfilled, (state, action) => {
-        state.status = "completed";
-        state.allPanelData = action.payload;
-        console.log("fetchGetAllData.fulfilled=> ", action);
+        if (action.payload) {
+          state.status = "completed";
+          state.allPanelData = action.payload;
+          console.log("fetchGetAllData.fulfilled=> ", action);
+        }
       })
       .addCase(fetchGetAllData.rejected, (state, action) => {
         state.status = "failed";

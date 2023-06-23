@@ -1,6 +1,6 @@
 import supabase from "../config/supabaseClient";
-// get all data adminPanel
 
+// get all data adminPanel
 export const getAllData = async () => {
   const { data, error } = await supabase.from("managerPanel").select();
 

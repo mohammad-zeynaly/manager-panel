@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import SideBar from "./components/SideBar/SideBar";
 import { useSelector, useDispatch } from "react-redux";
 import { sidebarStatusHandler } from "./Redux/reducers/adminPanelSlice";
+import Loader from "./components/Loader/Loader";
 
 const App = () => {
   const routers = useRoutes(routes);
@@ -27,6 +28,7 @@ const App = () => {
         </main>
         <SideBar />
       </div>
+      <Loader />
     </>
   );
 };
