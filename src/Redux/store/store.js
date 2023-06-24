@@ -9,5 +9,4 @@ const store = configureStore({
 });
 
 store.dispatch(fetchGetAllData());
-
 export default store;

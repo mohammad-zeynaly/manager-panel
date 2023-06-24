@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const Loader = () => {
   const loadingStatus = useSelector((state) => state.adminPanel.allPanelData);
-  console.log("loadingStatus=> ", loadingStatus);
   return createPortal(
     <div
       className={`page-loader ${

@@ -277,6 +277,7 @@ body {
   left: 0;
   right: 0;
   width: 100%;
+  z-index: 40;
 }
 
 .nav__wrapper {
@@ -662,6 +663,11 @@ input[type=file] {
   cursor: pointer;
   margin: 1rem 0;
   font-family: "Roboto-medium";
+}
+
+.form__btn.form__btn--disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 /* ============  Add Loading Style  ============ */

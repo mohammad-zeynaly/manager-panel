@@ -1,3 +1,5 @@
+import convertToUrlRelative from "../../functions/convertToUrlRelative";
+
 const TableRowTemplate = ({
   img,
   name,
@@ -10,7 +12,11 @@ const TableRowTemplate = ({
     <tr className="table-body__row">
       <td className="table-body__column ">
         <div className="table-body__column-img">
-          <img className="table__img" src={img} alt="product image" />
+          <img
+            className="table__img"
+            src={img.name ? convertToUrlRelative(img) : img}
+            alt="product image"
+          />
           <span className="table__img-name">{name}</span>
         </div>
       </td>

@@ -1,18 +1,67 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addNewProduct } from "../../Redux/reducers/adminPanelSlice";
+import convertToUrlRelative from "../../functions/ConvertToUrlRelative";
+import supabase from "../../config/supabaseClient";
 
 const Form = () => {
+  const [dataNameInput, setDataNameInput] = useState("");
+  const [dataCaptionInput, setDataCaptionInput] = useState("");
   const [uploadImageInput, setUploadImageInput] = useState();
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate("");
+
+  const uploadImage = async (uploadImageInput) => {
+    const { data, error } = await supabase.storage
+      .from("managerPanel")
+      .upload("images/" + uploadImageInput.name, uploadImageInput);
+
+    if (data) {
+      const { path } = data;
+      return path;
+    } else {
+      console.error("Failed upload image:(", error);
+    }
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    try {
+      await dispatch(
+        addNewProduct({
+          id: crypto.randomUUID(),
+          img: `https://ogpcnihgeeqndoclerzw.supabase.co/storage/v1/object/public/managerPanel/${await uploadImage(
+            uploadImageInput
+          )}`,
+          name: dataNameInput,
+          price: dataCaptionInput,
+          type: "product",
+        })
+      );
+      navigate("/");
+    } catch (error) {
+      console.warn("failed Post Request ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="form-container">
       <div className="form__wrapper">
         <h3 className="form__title">create product</h3>
-        <form className="from">
+        <form className="from" encType="multipart/form-data">
           <div className="form-input">
             <input
               type="text"
               className="from__input"
               placeholder="product name"
+              onChange={(e) => setDataNameInput(e.target.value)}
+              value={dataNameInput}
               required
             />
           </div>
@@ -21,6 +70,8 @@ const Form = () => {
               type="text"
               className="from__input"
               placeholder="product price"
+              onChange={(e) => setDataCaptionInput(e.target.value)}
+              value={dataCaptionInput}
               required
             />
           </div>
@@ -42,7 +93,12 @@ const Form = () => {
                 </svg>
                 upload photo
                 <div className={uploadImageInput && "form__upload"}>
-                  <img className="form__upload-img" src={uploadImageInput} />
+                  <img
+                    className="form__upload-img"
+                    src={
+                      uploadImageInput && convertToUrlRelative(uploadImageInput)
+                    }
+                  />
                 </div>
               </span>
 
@@ -51,16 +107,21 @@ const Form = () => {
                 id="images"
                 accept="image/*"
                 onChange={(e) => {
-                  console.log(window.URL.createObjectURL(e.target.files[0]));
-                  setUploadImageInput(
-                    window.URL.createObjectURL(e.target.files[0])
-                  );
+                  if (e.target.files[0]) {
+                    setUploadImageInput(e.target.files[0]);
+                  }
                 }}
               />
             </label>
+            <span> قبل از آپلود عکس لطفا vpn خود را روشن کنید </span>
           </div>
           <div className="form-input__btn">
-            <button type="submit" className="form__btn">
+            <button
+              type="button"
+              className={`form__btn ${loading ? "form__btn--disabled" : ""}`}
+              onClick={submitHandler}
+              disabled={loading}
+            >
               Submit
             </button>
           </div>

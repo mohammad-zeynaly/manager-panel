@@ -120,6 +120,7 @@ body {
   left: 0;
   right: 0;
   width: 100%;
+  z-index: 40;
 }
 .nav__wrapper {
   @include mixin.flexBox(space-between, center);
@@ -447,7 +448,10 @@ input[type="file"] {
   margin: 1rem 0;
   font-family: variables.$font-medium;
 }
-
+.form__btn.form__btn--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 /* ============  Add Loading Style  ============ */
 
 .page-loader {
