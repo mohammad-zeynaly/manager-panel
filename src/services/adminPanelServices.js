@@ -1,6 +1,5 @@
 import supabase from "../config/supabaseClient";
 
-
 // get all data adminPanel
 export const getAllData = async () => {
   const { data, error } = await supabase.from("managerPanel").select();
@@ -13,9 +12,8 @@ export const getAllData = async () => {
   }
 };
 
-// get all data adminPanel
+// create new product in sending information to supabase database
 export const createNewProduct = async (newProduct) => {
-  console.log("in function createNewProduct=> ", newProduct);
   const { data, error } = await supabase
     .from("managerPanel")
     .insert(newProduct);
@@ -24,9 +22,26 @@ export const createNewProduct = async (newProduct) => {
     console.log("post data supbase=> ", data);
     return data;
   } else {
-    console.warn("Couldent Fetching Data :(", error);
+    console.error("Failed Fetching Post Data :(", error);
   }
 };
 
-// upload image in database supabase
+// delete main product
+export const deleteMainProduct = async ({ id, imgUrl }) => {
+  const { error } = await supabase.from("managerPanel").delete().eq("id", id);
 
+  if (error) {
+    console.error("Failed Delete Data :(", error);
+  }
+  getAllData();
+
+  deleteImage(imgUrl);
+};
+
+const deleteImage = async (imgUrl) => {
+  const imageName = imgUrl.split("/").pop().replace(/%20/g, " ");
+  console.log("imageName", ["images" + "/" + imageName]);
+  const { data, error } = await supabase.storage
+    .from("managerPanel")
+    .remove(["images" + "/" + imageName]);
+};

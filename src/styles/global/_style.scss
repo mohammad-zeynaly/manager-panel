@@ -28,6 +28,18 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
+.overlay {
+  background-color: #0000004d;
+  width: 100%;
+  height: 110%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateZ(0);
+  z-index: 45;
+}
 
 .app__section {
   padding-top: 70px;
@@ -46,9 +58,11 @@ body {
 .btn-md {
   color: variables.$white-color;
   background: transparent;
+  border: none;
   padding: 0.5rem 1rem;
   border-radius: 0.8rem;
   transition: all 200ms ease-in;
+  cursor: pointer;
   &:hover {
     opacity: 0.92;
   }
@@ -382,6 +396,13 @@ body {
   @include mixin.widthAndHeight(100%, 100%);
   object-fit: cover;
 }
+.form__upload--message {
+  text-align: center;
+  margin: 1rem 0;
+  span {
+    color: rgb(235, 81, 81);
+  }
+}
 .form-input--file {
   margin-left: auto;
   margin-right: auto;
@@ -490,4 +511,38 @@ input[type="file"] {
   100% {
     transform: rotate(-360deg);
   }
+}
+
+/* delete modal style */
+
+.modal {
+  background-color: variables.$white-color;
+  box-shadow: variables.$main-shadow;
+  border-radius: 0.8rem;
+  padding: 1.6rem;
+  z-index: 9999;
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.delete-modal {
+}
+.delete-modal__wrapper {
+}
+.delete-modal__title {
+  font-size: 1.6rem;
+}
+.delete-modal__buttons {
+  margin-top: 1rem ;
+  @include mixin.flexBox(center, center);
+}
+.delete-modal--btn-primary {
+}
+.delete-modal__btn {
+  margin-right: 1.5rem;
+  background-color: variables.$primary-color;
+  font-size: 1.6rem;
+  padding: 0.8rem 1.6rem ;
 }

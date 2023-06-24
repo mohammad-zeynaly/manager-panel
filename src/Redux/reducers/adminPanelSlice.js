@@ -2,10 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getAllData,
   createNewProduct,
+  deleteMainProduct,
 } from "../../services/adminPanelServices";
 
 const initialState = {
   sidebarStatus: false,
+  modalStatus: false,
+  isDelete: false,
   status: "idle",
   allPanelData: [],
   newImagePath: "",
@@ -30,6 +33,15 @@ export const addNewProduct = createAsyncThunk(
   }
 );
 
+export const deleteProduct = createAsyncThunk(
+  "/adminPanel/deleteProduct",
+  async ({ id, imgUrl }) => {
+    const response = await deleteMainProduct({ id, imgUrl });
+
+    return response;
+  }
+);
+
 const adminPanelSlice = createSlice({
   name: "adminPanel",
   initialState: initialState,
@@ -39,8 +51,11 @@ const adminPanelSlice = createSlice({
       state.sidebarStatus = !state.sidebarStatus;
     },
 
-    newImagePathHandler: (state, action) => {
-      state.newImagePath = action.payload;
+    modalStatusHandler: (state, action) => {
+      state.modalStatus = !state.modalStatus;
+    },
+    isDeleteHandler: (state, action) => {
+      state.isDelete = action.payload;
     },
   },
 
@@ -60,12 +75,22 @@ const adminPanelSlice = createSlice({
         state.status = action.error.message;
       })
       .addCase(addNewProduct.fulfilled, (state, action) => {
-        console.log("action add new product=> ", action);
         state.allPanelData.push(action.meta.arg);
+      })
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        console.log("inside deleteProduct reducer => ", state.isDelete);
+        if (state.isDelete) {
+          const filteredData = state.allPanelData.filter(
+            (item) => item.id !== action.meta.arg.id
+          );
+
+          state.allPanelData = filteredData;
+          state.isDelete = false;
+        }
       });
   },
 });
 
 export default adminPanelSlice.reducer;
-export const { sidebarStatusHandler, newImagePathHandler } =
+export const { sidebarStatusHandler, modalStatusHandler, isDeleteHandler } =
   adminPanelSlice.actions;

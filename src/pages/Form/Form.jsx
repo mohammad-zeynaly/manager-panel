@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +17,8 @@ const Form = () => {
   const uploadImage = async (uploadImageInput) => {
     const { data, error } = await supabase.storage
       .from("managerPanel")
-      .upload("images/" + uploadImageInput.name, uploadImageInput);
+      .upload("images/" + nanoid(), uploadImageInput);
+    console.log("uploadImageInput.name=> ", uploadImageInput.name);
 
     if (data) {
       const { path } = data;
@@ -113,7 +115,10 @@ const Form = () => {
                 }}
               />
             </label>
-            <span> قبل از آپلود عکس لطفا vpn خود را روشن کنید </span>
+            <h6 className="form__upload--message">
+              <span>Warning: </span> Please turn on your vpn before uploading
+              photos
+            </h6>
           </div>
           <div className="form-input__btn">
             <button
