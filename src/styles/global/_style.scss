@@ -225,27 +225,22 @@ body {
 }
 
 /* ============  style products table  ============ */
-.products,
-.users {
+.products {
   margin-top: 5rem;
   box-shadow: variables.$main-shadow;
 }
 
 .products__heading,
-.users__heading,
-.products__wrapper,
-.users__wrapper {
+.products__wrapper {
   background-color: variables.$white-color;
   padding: 2rem;
   border-radius: 0.8rem;
 }
-.products__heading,
-.users__heading {
+.products__heading {
   @include mixin.flexBox(space-between, center);
 }
 
-.products__title,
-.users__title {
+.products__title {
   margin: 1.6rem 0;
   font-size: 1.8rem;
 }
@@ -535,7 +530,7 @@ input[type="file"] {
   font-size: 1.6rem;
 }
 .delete-modal__buttons {
-  margin-top: 1rem ;
+  margin-top: 1rem;
   @include mixin.flexBox(center, center);
 }
 .delete-modal--btn-primary {
@@ -544,5 +539,5 @@ input[type="file"] {
   margin-right: 1.5rem;
   background-color: variables.$primary-color;
   font-size: 1.6rem;
-  padding: 0.8rem 1.6rem ;
+  padding: 0.8rem 1.6rem;
 }
