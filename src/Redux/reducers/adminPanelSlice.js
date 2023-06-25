@@ -3,15 +3,16 @@ import {
   getAllData,
   createNewProduct,
   deleteMainProduct,
+  updateMainProduct,
 } from "../../services/adminPanelServices";
 
 const initialState = {
   sidebarStatus: false,
   modalStatus: false,
   isDelete: false,
+  mainEditProduct: {},
   status: "idle",
   allPanelData: [],
-  newImagePath: "",
 };
 
 // get all mangerPanel Data
@@ -42,20 +43,31 @@ export const deleteProduct = createAsyncThunk(
   }
 );
 
+export const updateProduct = createAsyncThunk(
+  "/adminPanel/updateProduct",
+  async (mainProduct) => {
+    const response = await updateMainProduct(mainProduct);
+    return response;
+  }
+);
+
 const adminPanelSlice = createSlice({
   name: "adminPanel",
   initialState: initialState,
 
   reducers: {
     sidebarStatusHandler: (state, action) => {
-      state.sidebarStatus = !state.sidebarStatus;
+      state.sidebarStatus = action.payload;
     },
 
     modalStatusHandler: (state, action) => {
-      state.modalStatus = !state.modalStatus;
+      state.modalStatus = action.payload;
     },
     isDeleteHandler: (state, action) => {
       state.isDelete = action.payload;
+    },
+    mainEditProductHandler: (state, action) => {
+      state.mainEditProduct = action.payload;
     },
   },
 
@@ -78,7 +90,6 @@ const adminPanelSlice = createSlice({
         state.allPanelData.push(action.meta.arg);
       })
       .addCase(deleteProduct.fulfilled, (state, action) => {
-        console.log("inside deleteProduct reducer => ", state.isDelete);
         if (state.isDelete) {
           const filteredData = state.allPanelData.filter(
             (item) => item.id !== action.meta.arg.id
@@ -87,10 +98,39 @@ const adminPanelSlice = createSlice({
           state.allPanelData = filteredData;
           state.isDelete = false;
         }
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        const { id, name, price, img } = action.meta.arg;
+
+        if (state.mainEditProduct && state.mainEditProduct.id === id) {
+          state.mainEditProduct = {
+            ...state.mainEditProduct,
+            name,
+            price,
+            img,
+          };
+        }
+
+        const productIndex = state.allPanelData.findIndex(
+          (product) => product.id === id
+        );
+
+        if (productIndex !== -1) {
+          state.allPanelData[productIndex] = {
+            ...state.allPanelData[productIndex],
+            name,
+            price,
+            img,
+          };
+        }
       });
   },
 });
 
 export default adminPanelSlice.reducer;
-export const { sidebarStatusHandler, modalStatusHandler, isDeleteHandler } =
-  adminPanelSlice.actions;
+export const {
+  sidebarStatusHandler,
+  modalStatusHandler,
+  isDeleteHandler,
+  mainEditProductHandler,
+} = adminPanelSlice.actions;

@@ -22,7 +22,7 @@ const Navbar = () => {
             <span
               className=""
               onClick={() => {
-                dispatch(sidebarStatusHandler());
+                dispatch(sidebarStatusHandler(true));
               }}
             >
               <svg

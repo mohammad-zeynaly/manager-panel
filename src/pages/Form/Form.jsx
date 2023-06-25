@@ -1,18 +1,28 @@
+import { useEffect } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { addNewProduct } from "../../Redux/reducers/adminPanelSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  addNewProduct,
+  updateProduct,
+} from "../../Redux/reducers/adminPanelSlice";
 import convertToUrlRelative from "../../functions/ConvertToUrlRelative";
 import supabase from "../../config/supabaseClient";
 
 const Form = () => {
+  
   const [dataNameInput, setDataNameInput] = useState("");
-  const [dataCaptionInput, setDataCaptionInput] = useState("");
+  const [dataPriceInput, setDataPriceInput] = useState("");
   const [uploadImageInput, setUploadImageInput] = useState();
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate("");
+  const { pathname } = useLocation();
+  const mainEditProduct = useSelector(
+    (state) => state.adminPanel.mainEditProduct
+  );
+  let conditionalUpdateProduct = pathname === "/update-product";
 
   const uploadImage = async (uploadImageInput) => {
     const { data, error } = await supabase.storage
@@ -40,7 +50,7 @@ const Form = () => {
             uploadImageInput
           )}`,
           name: dataNameInput,
-          price: dataCaptionInput,
+          price: dataPriceInput,
           type: "product",
         })
       );
@@ -52,10 +62,45 @@ const Form = () => {
     }
   };
 
+  useEffect(() => {
+    if (conditionalUpdateProduct) {
+      console.log("inside component form ", mainEditProduct);
+      setDataNameInput(mainEditProduct.name);
+      setDataPriceInput(mainEditProduct.price);
+    }
+  }, [pathname]);
+
+  const updateProductHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      await dispatch(
+        updateProduct({
+          id: mainEditProduct.id,
+          name: dataNameInput,
+          price: dataPriceInput,
+          img: uploadImageInput
+            ? `https://ogpcnihgeeqndoclerzw.supabase.co/storage/v1/object/public/managerPanel/${await uploadImage(
+                uploadImageInput
+              )}`
+            : mainEditProduct.img,
+        })
+      );
+      navigate("/");
+    } catch (error) {
+      console.error("Failed Update Product :( ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="form-container">
       <div className="form__wrapper">
-        <h3 className="form__title">create product</h3>
+        <h3 className="form__title">
+          {conditionalUpdateProduct ? "update product" : "create product"}
+        </h3>
         <form className="from" encType="multipart/form-data">
           <div className="form-input">
             <input
@@ -72,8 +117,8 @@ const Form = () => {
               type="text"
               className="from__input"
               placeholder="product price"
-              onChange={(e) => setDataCaptionInput(e.target.value)}
-              value={dataCaptionInput}
+              onChange={(e) => setDataPriceInput(e.target.value)}
+              value={dataPriceInput}
               required
             />
           </div>
@@ -96,9 +141,13 @@ const Form = () => {
                 upload photo
                 <div className={uploadImageInput && "form__upload"}>
                   <img
-                    className="form__upload-img"
+                    className={`form__upload-img ${
+                      conditionalUpdateProduct && "form__upload--img"
+                    }`}
                     src={
-                      uploadImageInput && convertToUrlRelative(uploadImageInput)
+                      uploadImageInput
+                        ? convertToUrlRelative(uploadImageInput)
+                        : conditionalUpdateProduct && mainEditProduct.img
                     }
                   />
                 </div>
@@ -121,14 +170,25 @@ const Form = () => {
             </h6>
           </div>
           <div className="form-input__btn">
-            <button
-              type="button"
-              className={`form__btn ${loading ? "form__btn--disabled" : ""}`}
-              onClick={submitHandler}
-              disabled={loading}
-            >
-              Submit
-            </button>
+            {conditionalUpdateProduct ? (
+              <button
+                type="button"
+                className={`form__btn ${loading ? "form__btn--disabled" : ""}`}
+                onClick={updateProductHandler}
+                disabled={loading}
+              >
+                update product
+              </button>
+            ) : (
+              <button
+                type="button"
+                className={`form__btn ${loading ? "form__btn--disabled" : ""}`}
+                onClick={submitHandler}
+                disabled={loading}
+              >
+                Submit
+              </button>
+            )}
           </div>
         </form>
       </div>

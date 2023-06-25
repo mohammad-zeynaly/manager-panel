@@ -45,3 +45,21 @@ const deleteImage = async (imgUrl) => {
     .from("managerPanel")
     .remove(["images" + "/" + imageName]);
 };
+
+// update main Product
+export const updateMainProduct = async (updateProduct) => {
+  console.log("inside updateMainProduct => ", updateProduct);
+
+  let { id, name, price, img } = updateProduct;
+  try {
+    const { error, data } = await supabase
+      .from("managerPanel")
+      .update({ name, price, img })
+      .eq("id", id);
+
+    if (error) throw error;
+    else console.log("data product updated :) ", data);
+  } catch (error) {
+    console.error("Failed Update Product :(", error);
+  }
+};

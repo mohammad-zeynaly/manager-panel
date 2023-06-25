@@ -3,7 +3,10 @@ import routes from "./routes/routes";
 import Navbar from "./components/Navbar/Navbar";
 import SideBar from "./components/SideBar/SideBar";
 import { useSelector, useDispatch } from "react-redux";
-import { sidebarStatusHandler } from "./Redux/reducers/adminPanelSlice";
+import {
+  modalStatusHandler,
+  sidebarStatusHandler,
+} from "./Redux/reducers/adminPanelSlice";
 import Loader from "./components/Loader/Loader";
 import DeleteModal from "./components/DeleteModal/DeleteModal";
 
@@ -17,7 +20,10 @@ const App = () => {
     <>
       <div
         className={sidebarStatus || modalStatus ? "overlay" : ""}
-        onClick={() => dispatch(sidebarStatusHandler())}
+        onClick={() => {
+          dispatch(sidebarStatusHandler(false));
+          dispatch(modalStatusHandler(false));
+        }}
       ></div>
       <div
         className={`container ${

@@ -391,6 +391,10 @@ body {
   @include mixin.widthAndHeight(100%, 100%);
   object-fit: cover;
 }
+.form__upload--img {
+  @include mixin.widthAndHeight(8rem, 8rem);
+  margin-left: 1rem;
+}
 .form__upload--message {
   text-align: center;
   margin: 1rem 0;
@@ -460,7 +464,7 @@ input[type="file"] {
   border-radius: 0.8rem;
   padding: 1rem 1.5rem;
   font-size: 1.6rem;
-  cursor: pointer;
+  cursor: pointer !important;
   margin: 1rem 0;
   font-family: variables.$font-medium;
 }

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -10,14 +9,7 @@ const DeleteModal = () => {
   const deleteModalStatus = useSelector(
     (state) => state.adminPanel.modalStatus
   );
-  const isDelete = useSelector((state) => state.adminPanel.isDelete);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (isDelete) {
-  //     console.log("isDelete=> ", isDelete);
-  //   }
-  // }, [isDelete]);
 
   return createPortal(
     <>
