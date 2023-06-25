@@ -1,0 +1,551 @@
+@use "./variables";
+@use "./mixin";
+
+/* ============ general styles  ============ */
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-family: variables.$font-medium, Arial, Helvetica, sans-serif;
+  background: #fafafa;
+  font-size: 1.5rem;
+}
+
+.container {
+  width: 128rem;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.overlay {
+  background-color: #0000004d;
+  width: 100%;
+  height: 110%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateZ(0);
+  z-index: 45;
+}
+
+.app__section {
+  padding-top: 70px;
+  padding-bottom: 35px;
+}
+.app__wrapper,
+.nav__wrapper {
+  padding-left: 26.5rem !important;
+}
+.sidebar--close .app__wrapper {
+  padding-left: 0 !important;
+}
+.sidebar--close .nav__wrapper {
+  padding-left: 0 !important;
+}
+.btn-md {
+  color: variables.$white-color;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.8rem;
+  transition: all 200ms ease-in;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.92;
+  }
+}
+
+/* ============ general Table style  ============ */
+
+.table {
+  width: 100%;
+  text-align: center;
+  table-layout: fixed;
+  border-collapse: collapse;
+  min-width: 44rem;
+}
+.table__heading {
+  border-bottom: 1px solid #eee;
+  tr {
+    th {
+      padding-bottom: 0.8rem;
+    }
+  }
+}
+.table__title {
+  &:nth-child(1) {
+    text-align: left;
+    padding-left: 0.8rem;
+  }
+}
+.table-body__row {
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.06);
+}
+.table-body__column {
+  padding: 1rem 0;
+}
+.table-body__column-img {
+  @include mixin.flexBox("", center);
+  span {
+    padding-left: 1.2rem;
+  }
+}
+.table__img {
+  @include mixin.widthAndHeight(5rem, 5rem);
+  border-radius: 100%;
+}
+
+.table__icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.table__icon {
+  @include mixin.widthAndHeight(2rem, 2rem);
+}
+.table__icon--edit {
+  color: variables.$primary-color;
+}
+.table__icon--delete {
+  color: red;
+}
+
+/* ============ Navbar style  ============ */
+.nav {
+  background: variables.$white-color;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.06),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.042), 0px 3px 14px 2px rgba(0, 0, 0, 0.036);
+  transition: all 200ms ease-in;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 40;
+}
+.nav__wrapper {
+  @include mixin.flexBox(space-between, center);
+  flex-direction: row-reverse;
+  padding: 1rem 0;
+}
+.nav-content-right {
+}
+.nav-content-right {
+  cursor: pointer;
+  .nav-content-right__profile {
+    @include mixin.flexBox(center, center);
+    transition: background 200ms ease-in;
+    padding: 0.5rem;
+    border-radius: 2.4rem;
+
+    &:hover {
+      background-color: rgba($color: rgb(0, 0, 0), $alpha: 0.04);
+    }
+    span {
+      padding: 0 0.5rem;
+    }
+  }
+}
+.nav-content-right__img {
+  @include mixin.widthAndHeight(4.5rem, 4.5rem);
+  border-radius: 100%;
+  object-fit: cover;
+}
+.nav-content-left {
+}
+.nav-content-left__icon {
+  @include mixin.widthAndHeight(2.5rem, 2.5rem);
+  cursor: pointer;
+}
+
+/* ============  style statistics  ============ */
+
+.statistics {
+  margin-top: 5rem;
+}
+.statistics__wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 1.6rem;
+}
+.statistics-item {
+  @include mixin.flexBox(space-between, center);
+  background-color: variables.$white-color;
+  padding: 2.4rem;
+  border-radius: 0.8rem;
+  box-shadow: variables.$main-shadow;
+}
+.statistics-item__content-left {
+  @include mixin.flexBox(center, center);
+}
+.statistics-item__icon {
+  @include mixin.widthAndHeight(3.5rem, 3.5rem);
+  color: variables.$primary-color;
+}
+.statistics-item__information {
+  margin-left: 1rem;
+  span {
+    color: rgba(52, 49, 76, 0.54);
+    font-size: 1.4rem;
+  }
+  h6 {
+    color: variables.$primary-color;
+    font-size: 1.6rem;
+  }
+}
+.statistics-item__content-right {
+}
+.statistics-item-icon__btn {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 0.6rem;
+  transition: background 200ms ease-in;
+  border-radius: 100%;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+.statistics-item__arrow {
+  @include mixin.widthAndHeight(2.3rem, 2.3rem);
+  color: rgba(0, 0, 0, 0.54);
+}
+
+/* ============  style products table  ============ */
+.products {
+  margin-top: 5rem;
+  box-shadow: variables.$main-shadow;
+}
+
+.products__heading,
+.products__wrapper {
+  background-color: variables.$white-color;
+  padding: 2rem;
+  border-radius: 0.8rem;
+}
+.products__heading {
+  @include mixin.flexBox(space-between, center);
+}
+
+.products__title {
+  margin: 1.6rem 0;
+  font-size: 1.8rem;
+}
+
+.products__btn {
+  background-color: variables.$primary-color;
+}
+
+/* ============  style sidebar  ============ */
+.sidebar {
+  background: linear-gradient(
+    to bottom,
+    rgba(34, 42, 69, 0.96),
+    rgba(34, 42, 69, 0.96)
+  );
+  color: variables.$white-color;
+  height: 120%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 26rem;
+  z-index: 99;
+}
+.sidebar--open {
+  left: 0;
+}
+.sidebar--close {
+  left: -26rem;
+}
+.sidebar__wrapper {
+}
+.sidebar__title {
+  font-size: 2.2rem;
+  border-bottom: 1px solid #eee;
+  padding: 1.6rem;
+}
+.sidebar-menu {
+  @include mixin.flexBox(center, start);
+  flex-direction: column;
+  font-size: 1.8rem;
+  padding: 0 1.6rem;
+  margin-top: 1.5rem;
+}
+
+.sidebar-menu__item {
+  margin-top: 1.5rem;
+  @include mixin.flexBox(center, center);
+}
+.sidebar__icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+.sidebar-menu__link {
+  color: inherit;
+}
+
+/* ============  style users statistics  ============ */
+.users-statistics {
+  margin-top: 5rem;
+}
+.users-statistics__wrapper {
+  @include mixin.flexBox(space-between, center);
+}
+.users-statistics-item {
+  background-color: variables.$white-color;
+  color: rgba(52, 49, 76, 1);
+  padding: 1.6rem;
+  border-radius: 0.8rem;
+  width: 49%;
+  @include mixin.flexBox(space-between, center);
+  box-shadow: variables.$main-shadow;
+}
+.users-statistics-item__icon {
+  @include mixin.flexBox("", center);
+  h6 {
+    margin-left: 1.5rem;
+    font-size: 2rem;
+    background: transparent;
+  }
+  span {
+    padding: 1rem;
+    border-radius: 100%;
+    @include mixin.flexBox(center, center);
+  }
+}
+.users-statistics__icon--trending {
+  background-color: #daf4e9;
+  color: #08ad6c;
+}
+.users-statistics__icon--star {
+  color: #ff3d57;
+  background-color: #fcc2ca;
+}
+.users-statistics__icon {
+  @include mixin.widthAndHeight(2.8rem, 2.8rem);
+}
+.users-statistics__count {
+  margin-top: 2rem;
+  font-size: 2.5rem;
+}
+.users-statistics-item__percent {
+  font-size: 1.6rem;
+  background-color: transparent;
+}
+
+/* ============  style Form   ============ */
+
+.form-container {
+  margin-top: 5rem;
+}
+.form__title {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+.form__wrapper {
+  background-color: variables.$white-color;
+  padding: 1.6rem;
+  border-radius: 0.8rem;
+}
+.from {
+  @include mixin.flexBox(space-between, center);
+  flex-wrap: wrap;
+}
+
+.form-input {
+  width: 49%;
+  margin-top: 1.5rem;
+}
+.from__input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 1.5rem;
+  border-radius: 0.8rem;
+  background-color: #f4f4f4;
+  font-size: 1.5rem;
+}
+.from__input::placeholder {
+  font-family: variables.$font-regular;
+}
+.form__upload {
+  @include mixin.widthAndHeight(8rem, 8rem);
+  margin-left: 1rem;
+}
+.form__upload-img {
+  @include mixin.widthAndHeight(100%, 100%);
+  object-fit: cover;
+}
+.form__upload--img {
+  @include mixin.widthAndHeight(8rem, 8rem);
+  margin-left: 1rem;
+}
+.form__upload--message {
+  text-align: center;
+  margin: 1rem 0;
+  span {
+    color: rgb(235, 81, 81);
+  }
+}
+.form-input--file {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+}
+.drop-container {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px dashed #555;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+
+.drop-container:hover {
+  box-shadow: variables.$main-shadow;
+  border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+  color: #222;
+}
+
+.drop-title {
+  color: #444;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: color 0.2s ease-in-out;
+  @include mixin.flexBox(center, center);
+}
+.form-input__icon {
+  @include mixin.widthAndHeight(3rem, 3rem);
+  margin-right: 1rem;
+}
+input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.form-input__btn {
+  width: 100%;
+  @include mixin.flexBox(center, center);
+}
+
+.form__btn {
+  background-color: variables.$primary-color;
+  border: none;
+  color: variables.$white-color;
+  border-radius: 0.8rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.6rem;
+  cursor: pointer !important;
+  margin: 1rem 0;
+  font-family: variables.$font-medium;
+}
+.form__btn.form__btn--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.form-input__error-message {
+  padding: 1rem 0;
+  color: rgb(235, 81, 81);
+}
+/* ============  Add Loading Style  ============ */
+
+.page-loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999999;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.page-loader--active {
+  display: flex;
+}
+.page-loader--inactive {
+  display: none;
+}
+.spinner-loader {
+  color: #5867dd;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 15px;
+  display: inline-block;
+  vertical-align: text-bottom;
+  border: 0.2rem solid #5867dd;
+  border-left-color: transparent;
+  border-radius: 50%;
+  animation: spinner-animation 0.75s linear infinite;
+}
+
+@keyframes spinner-animation {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* delete modal style */
+
+.modal {
+  background-color: variables.$white-color;
+  box-shadow: variables.$main-shadow;
+  border-radius: 0.8rem;
+  padding: 1.6rem;
+  z-index: 9999;
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.delete-modal {
+}
+.delete-modal__wrapper {
+}
+.delete-modal__title {
+  font-size: 1.6rem;
+}
+.delete-modal__buttons {
+  margin-top: 1rem;
+  @include mixin.flexBox(center, center);
+}
+.delete-modal--btn-primary {
+}
+.delete-modal__btn {
+  margin-right: 1.5rem;
+  background-color: variables.$primary-color;
+  font-size: 1.6rem;
+  padding: 0.8rem 1.6rem;
+}

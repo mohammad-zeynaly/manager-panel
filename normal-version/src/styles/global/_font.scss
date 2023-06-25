@@ -1,0 +1,22 @@
+/* ============  add fonts project   ============ */
+
+@font-face {
+  font-family: "Roboto-regular";
+  src: url("../fonts/ttf/Roboto-Regular.ttf"),
+    url("../fonts/woff/Roboto-Regular.woff"),
+    url("../fonts/woff2/Roboto-Regular.woff2");
+}
+
+@font-face {
+  font-family: "Roboto-medium";
+  src: url("../fonts/ttf/Roboto-Medium.ttf"),
+    url("../fonts/woff/Roboto-Medium.woff"),
+    url("../fonts/woff2/Roboto-Medium.woff2");
+}
+
+@font-face {
+  font-family: "Roboto-bold";
+  src: url("../fonts/ttf/Roboto-Bold.ttf"),
+    url("../fonts/woff/Roboto-Bold.woff"),
+    url("../fonts/woff2/Roboto-Bold.woff2");
+}
