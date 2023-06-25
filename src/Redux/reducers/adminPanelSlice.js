@@ -6,6 +6,7 @@ import {
   updateMainProduct,
 } from "../../services/adminPanelServices";
 
+// all states 
 const initialState = {
   sidebarStatus: false,
   modalStatus: false,
@@ -34,6 +35,7 @@ export const addNewProduct = createAsyncThunk(
   }
 );
 
+// delete main product
 export const deleteProduct = createAsyncThunk(
   "/adminPanel/deleteProduct",
   async ({ id, imgUrl }) => {
@@ -43,6 +45,7 @@ export const deleteProduct = createAsyncThunk(
   }
 );
 
+// update main product
 export const updateProduct = createAsyncThunk(
   "/adminPanel/updateProduct",
   async (mainProduct) => {
