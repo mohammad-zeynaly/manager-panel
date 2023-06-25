@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 function ImageUploader({ mainEditProduct, onChange, mainImgSrc, name }) {
   const { pathname } = useLocation();
   let conditionalUpdateProduct = pathname === "/update-product";
-
   return (
     <div className="form-input form-input--file">
       <label htmlFor="images" className="drop-container">
@@ -24,12 +23,13 @@ function ImageUploader({ mainEditProduct, onChange, mainImgSrc, name }) {
           </svg>
           upload photo
           <div className={mainImgSrc && "form__upload"}>
+            {console.log("ImageUploader=> ", mainImgSrc)}
             <img
               className={`form__upload-img ${
                 conditionalUpdateProduct && "form__upload--img"
               }`}
               src={
-                mainImgSrc
+                mainImgSrc && mainImgSrc.name
                   ? convertToUrlRelative(mainImgSrc)
                   : conditionalUpdateProduct && mainEditProduct.img
               }

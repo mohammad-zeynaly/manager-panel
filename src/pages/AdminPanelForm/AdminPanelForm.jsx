@@ -62,6 +62,7 @@ const AdminPanelForm = () => {
     if (conditionalUpdateProduct) {
       formikRef.current.setFieldValue("productName", mainEditProduct.name);
       formikRef.current.setFieldValue("productPrice", mainEditProduct.price);
+      formikRef.current.setFieldValue("productImage", mainEditProduct.img);
     }
   }, [pathname, conditionalUpdateProduct, formikRef]);
 
@@ -71,10 +72,12 @@ const AdminPanelForm = () => {
 
     try {
       const img = values.productImage
-        ? `https://ogpcnihgeeqndoclerzw.supabase.co/storage/v1/object/public/managerPanel/${await uploadImage(
+        ? mainEditProduct.img
+        : `https://ogpcnihgeeqndoclerzw.supabase.co/storage/v1/object/public/managerPanel/${await uploadImage(
             values.productImage
-          )}`
-        : mainEditProduct.img;
+          )}`;
+
+      console.log("img update product => ", values.productImage);
       await dispatch(
         updateProduct({
           id: mainEditProduct.id,
@@ -123,6 +126,7 @@ const AdminPanelForm = () => {
                   type="text"
                   placeholder="product name"
                   name="productName"
+                  // value={formik.values.productName}
                 />
                 <ErrorMessage
                   name="productName"
@@ -136,6 +140,7 @@ const AdminPanelForm = () => {
                   type="text"
                   placeholder="product price"
                   name="productPrice"
+                  // value={formik.values.productPrice}
                 />
 
                 <ErrorMessage
