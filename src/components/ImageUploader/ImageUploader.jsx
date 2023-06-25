@@ -1,10 +1,7 @@
-// import { useState } from "react";
-// import { nanoid } from "@reduxjs/toolkit";
 import convertToUrlRelative from "../../functions/ConvertToUrlRelative";
-// import supabase from "../../config/supabaseClient";
 import { useLocation } from "react-router-dom";
 
-function ImageUploader({ mainEditProduct, onChange, mainImgSrc }) {
+function ImageUploader({ mainEditProduct, onChange, mainImgSrc, name }) {
   const { pathname } = useLocation();
   let conditionalUpdateProduct = pathname === "/update-product";
 
@@ -40,7 +37,13 @@ function ImageUploader({ mainEditProduct, onChange, mainImgSrc }) {
           </div>
         </span>
 
-        <input type="file" id="images" accept="image/*" onChange={onChange} />
+        <input
+          type="file"
+          id="images"
+          accept="image/*"
+          onChange={onChange}
+          name={name}
+        />
       </label>
       <h6 className="form__upload--message">
         <span>Warning: </span> Please turn on your vpn before uploading photos

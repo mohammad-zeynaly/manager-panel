@@ -472,6 +472,10 @@ input[type="file"] {
   opacity: 0.5;
   pointer-events: none;
 }
+.form-input__error-message {
+  padding: 1rem 0;
+  color: rgb(235, 81, 81);
+}
 /* ============  Add Loading Style  ============ */
 
 .page-loader {

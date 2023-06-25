@@ -1,15 +1,16 @@
-function Input({ type, placeholder, onChange, value }) {
+import { Field } from "formik";
+
+function Input({ name, type, placeholder, onChange, value }) {
   return (
-      <div className="form-input">
-        <input
-          type={type}
-          className="from__input"
-          placeholder={placeholder}
-          onChange={onChange}
-          value={value}
-          required
-        />
-      </div>
+    <Field
+      type={type}
+      className="from__input"
+      placeholder={placeholder}
+      // onChange={onChange}
+      // value={value}
+      name={name}
+      id={name}
+    />
   );
 }
 

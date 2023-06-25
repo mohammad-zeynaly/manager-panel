@@ -684,7 +684,7 @@ input[type=file] {
   border-radius: 0.8rem;
   padding: 1rem 1.5rem;
   font-size: 1.6rem;
-  cursor: pointer;
+  cursor: pointer !important;
   margin: 1rem 0;
   font-family: "Roboto-medium";
 }
@@ -692,6 +692,11 @@ input[type=file] {
 .form__btn.form__btn--disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+.form-input__error-message {
+  padding: 1rem 0;
+  color: rgb(235, 81, 81);
 }
 
 /* ============  Add Loading Style  ============ */

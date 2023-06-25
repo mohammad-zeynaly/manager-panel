@@ -1,10 +1,10 @@
 import Products from "../pages/Products/Products";
-import Form from "../pages/Form/Form";
+import AdminPanelForm from "../pages/AdminPanelForm/AdminPanelForm";
 
 const routes = [
   { path: "/", element: <Products /> },
-  { path: "/create-product", element: <Form /> },
-  { path: "/update-product", element: <Form /> },
+  { path: "/create-product", element: <AdminPanelForm /> },
+  { path: "/update-product", element: <AdminPanelForm /> },
 ];
 
 export default routes;
