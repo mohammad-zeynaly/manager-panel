@@ -1,11 +1,11 @@
 # adminPanel / en page front-end
 
-## <!-- # # [review online](https://arvancloud.netlify.app/) -->
+## # # [review online](https://mohammad-zeynali.github.io/manager-panel/)
 
 ## tips
 
-- This project is being developed
 - fully responsive for mobile, tablet, laptop and desktop
+- In this project, the goal was to implement the CRUD operation with Redux
 
 ---
 
