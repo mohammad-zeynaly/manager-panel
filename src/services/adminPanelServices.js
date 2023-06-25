@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit";
 import supabase from "../config/supabaseClient";
 
 // get all data adminPanel
@@ -38,6 +39,22 @@ export const deleteMainProduct = async ({ id, imgUrl }) => {
   deleteImage(imgUrl);
 };
 
+// upload image in database (buckets) supabase
+export const uploadImage = async (uploadImageInput) => {
+  const { data, error } = await supabase.storage
+    .from("managerPanel")
+    .upload("images/" + nanoid(), uploadImageInput);
+  console.log("uploadImageInput.name=> ", uploadImageInput.name);
+
+  if (data) {
+    const { path } = data;
+    return path;
+  } else {
+    console.error("Failed upload image:(", error);
+  }
+};
+
+// delete  image in database (buckets) supabase
 const deleteImage = async (imgUrl) => {
   const imageName = imgUrl.split("/").pop().replace(/%20/g, " ");
   console.log("imageName", ["images" + "/" + imageName]);
