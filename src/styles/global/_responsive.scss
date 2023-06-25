@@ -92,7 +92,9 @@
     padding: 0.3rem 0.6rem;
     font-size: 1.4rem;
   }
-
+  .delete-modal__btn {
+    padding: 0.5rem 1rem !important;
+  }
   /* ============  responsive page products  ============ */
   .products__title {
     font-size: 1.4rem;
@@ -131,5 +133,11 @@
   .form__upload {
     @include mixin.widthAndHeight(6rem, 6rem);
     margin-left: 0.6rem;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .modal {
+    width: 27.5rem;
   }
 }

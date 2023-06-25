@@ -19,6 +19,7 @@ body {
   font-family: variables.$font-medium, Arial, Helvetica, sans-serif;
   background: #fafafa;
   font-size: 1.5rem;
+  overflow-x: hidden;
 }
 
 .container {
@@ -529,6 +530,7 @@ input[type="file"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 32.6rem;
 }
 .delete-modal {
 }
@@ -536,6 +538,7 @@ input[type="file"] {
 }
 .delete-modal__title {
   font-size: 1.6rem;
+  text-align: center;
 }
 .delete-modal__buttons {
   margin-top: 1rem;

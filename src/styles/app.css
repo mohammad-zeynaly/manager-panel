@@ -165,6 +165,7 @@ body {
   font-family: "Roboto-medium", Arial, Helvetica, sans-serif;
   background: #fafafa;
   font-size: 1.5rem;
+  overflow-x: hidden;
 }
 
 .container {
@@ -752,10 +753,12 @@ input[type=file] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 32.6rem;
 }
 
 .delete-modal__title {
   font-size: 1.6rem;
+  text-align: center;
 }
 
 .delete-modal__buttons {
@@ -849,6 +852,9 @@ input[type=file] {
     padding: 0.3rem 0.6rem;
     font-size: 1.4rem;
   }
+  .delete-modal__btn {
+    padding: 0.5rem 1rem !important;
+  }
   /* ============  responsive page products  ============ */
   .products__title {
     font-size: 1.4rem;
@@ -883,6 +889,11 @@ input[type=file] {
     width: 6rem;
     height: 6rem;
     margin-left: 0.6rem;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .modal {
+    width: 27.5rem;
   }
 }
 
