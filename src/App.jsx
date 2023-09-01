@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useRoutes } from "react-router-dom";
 import routes from "./routes/routes";
 import Navbar from "./components/Navbar/Navbar";
@@ -15,6 +16,18 @@ const App = () => {
   const sidebarStatus = useSelector((state) => state.adminPanel.sidebarStatus);
   const modalStatus = useSelector((state) => state.adminPanel.modalStatus);
   const dispatch = useDispatch();
+
+  const changeUrlPage = () => {
+    window.location.href = "https://mohammad-zeynali.github.io/manager-panel/";
+  };
+
+  useEffect(() => {
+    window.addEventListener("load", changeUrlPage);
+
+    return () => {
+      window.addEventListener("load", changeUrlPage);
+    };
+  }, []);
 
   return (
     <>
